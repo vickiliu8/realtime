@@ -15,17 +15,30 @@ class DetailViewController: UIViewController {
     var eventBlurb: String?
     var event: AnyObject?
     var eventAddress: String?
+    var eventImage: PFFile?
+    
+    @IBOutlet weak var Image: PFImageView!
+    
     @IBOutlet weak var Name: UILabel!
     
     @IBOutlet weak var Address: UILabel!
     @IBOutlet weak var Distance: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         Name.text = eventName
         //println(eventName)
         // Do any additional setup after loading the view.
-        Distance.text = eventDistance
+        Distance.text = eventDistance! + "mi"
         Address.text = eventAddress
+        
+        if eventImage != nil {
+            Image.file = eventImage
+            Image.loadInBackground()
+        }else {
+            var placeholder = UIImage(named: "placeholder.JPG")
+            Image.image = placeholder
+        }
     }
 
     override func didReceiveMemoryWarning() {

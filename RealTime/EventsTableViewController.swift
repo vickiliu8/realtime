@@ -110,7 +110,7 @@ class EventsTableViewController: PFQueryTableViewController,  CLLocationManagerD
         //query.limit = 10
         // Final list of objects
         events = query.findObjects()!
-        
+        query.limit = 15
          return query
 
     }
@@ -194,15 +194,33 @@ class EventsTableViewController: PFQueryTableViewController,  CLLocationManagerD
             let detailViewController = segue.destinationViewController as! DetailViewController
             if let indexPath = tableView.indexPathForCell(sender as! EventsTableViewCell) {
                 
-                //println(events[indexPath.row])
-                    
+                /*var b_image = self.view.convertViewToImage()
+                b_image = b_image.applyBlurWithRadius(2, tintColor: UIColor(white: 0.0, alpha: 0.5), saturationDeltaFactor: 1.0, maskImage: nil)!
+                var backView = UIImageView(frame: self.view.frame)
+                backView.image = b_image
+                backView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.5)
+                detailViewController.view.insertSubview(backView, atIndex: 0)*/
+                
+                
                 detailViewController.eventName = events[indexPath.row]["name"] as! String?
                 detailViewController.eventBlurb = events[indexPath.row]["blurb"] as! String?
                 detailViewController.eventDistance = events[indexPath.row]["distFromCurrentUser"] as! String?
                 detailViewController.eventAddress = events[indexPath.row]["address"] as! String?
-                
+                detailViewController.eventImage = events[indexPath.row]["picture"] as! PFFile?
             }
         }
+        
     }
 
+}
+
+extension UIView {
+    func convertViewToImage() -> UIImage{
+        UIGraphicsBeginImageContext(self.bounds.size);
+        self.drawViewHierarchyInRect(self.bounds, afterScreenUpdates: true)
+        var image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext();
+        
+        return image;
+    }
 }
