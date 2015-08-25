@@ -16,11 +16,14 @@ class DetailViewController: UIViewController {
     var event: AnyObject?
     var eventAddress: String?
     var eventImage: PFFile?
+    var eventEnd: String?
     
     @IBOutlet weak var Image: PFImageView!
     
+    @IBOutlet weak var EndTime: UILabel!
     @IBOutlet weak var Name: UILabel!
     
+    @IBOutlet weak var Blurb: UILabel!
     @IBOutlet weak var Address: UILabel!
     @IBOutlet weak var Distance: UILabel!
     
@@ -31,7 +34,9 @@ class DetailViewController: UIViewController {
         // Do any additional setup after loading the view.
         Distance.text = eventDistance! + "mi"
         Address.text = eventAddress
-        
+        Blurb.text = eventBlurb
+        if eventEnd != nil {
+            EndTime.text = "END TIME: " + eventEnd!}
         if eventImage != nil {
             Image.file = eventImage
             Image.loadInBackground()

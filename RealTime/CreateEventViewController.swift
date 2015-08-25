@@ -14,19 +14,85 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate{
  
     @IBOutlet weak var eventTitle: UITextField!
     
-    @IBOutlet weak var startTime: UITextField!
     
-    @IBOutlet weak var endTime: UITextField!
     
     @IBOutlet weak var eventLocation: UITextField!
     
     @IBOutlet weak var imageToUpload: UIImageView!
     @IBOutlet weak var eventDescription: UITextField!
     
+    
+    @IBOutlet weak var startTextField: UITextField!
+    
+    
+    @IBOutlet weak var endTextField: UITextField!
+    required init(coder aDecoder: (NSCoder!)) {
+        //location = CLLocationCoordinate2DMake(0, 0)
+        //place = PFGeoPoint(latitude: 0, longitude: 0)
+        starttime = NSDate()
+        endtime = NSDate()
+        super.init(coder: aDecoder)
+
+    }
+    
+    
+   
+    @IBAction func startEditing(sender: UITextField) {
+        var datePickerView:UIDatePicker = UIDatePicker()
+        
+        datePickerView.datePickerMode = UIDatePickerMode.DateAndTime
+        
+        sender.inputView = datePickerView
+        
+        datePickerView.addTarget(self, action: Selector("startdatePickerValueChanged:"), forControlEvents: UIControlEvents.ValueChanged)
+    }
+    
+    
+    @IBAction func endEditing(sender: UITextField) {
+        
+        var datePickerView:UIDatePicker = UIDatePicker()
+        
+        datePickerView.datePickerMode = UIDatePickerMode.DateAndTime
+        
+        sender.inputView = datePickerView
+        
+        datePickerView.addTarget(self, action: Selector("enddatePickerValueChanged:"), forControlEvents: UIControlEvents.ValueChanged)
+
+    }
+   
+    var starttime: NSDate
+    var endtime: NSDate
+    func startdatePickerValueChanged(sender:UIDatePicker) {
+        
+        var dateFormatter = NSDateFormatter()
+        
+        dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle
+        dateFormatter.timeStyle = NSDateFormatterStyle.ShortStyle
+
+        
+        startTextField.text = dateFormatter.stringFromDate(sender.date)
+        starttime = sender.date
+    }
+    
+    func enddatePickerValueChanged(sender:UIDatePicker) {
+        
+        
+        var dateFormatter = NSDateFormatter()
+        
+        dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle
+        dateFormatter.timeStyle = NSDateFormatterStyle.ShortStyle
+        
+        
+        endTextField.text = dateFormatter.stringFromDate(sender.date)
+        endtime = sender.date
+    }
+    
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false
     }
+
+    
     
     @IBAction func addAPicture(sender: AnyObject) {
         let imagePicker = UIImagePickerController()
@@ -34,6 +100,10 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate{
         imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
         presentViewController(imagePicker, animated: true, completion: nil)
     }
+    
+    
+    
+    
     
    @IBAction func donePressed(sender: AnyObject) {
         //commentTextField.resignFirstResponder()
@@ -68,7 +138,14 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate{
         event["name"] = self.eventTitle.text
         var loc = event["address"] as! String
         var geocoder = CLGeocoder()
+        event["start"] = starttime
+        event["end"] = endtime
+        event["startString"] = self.startTextField.text
+        event["endString"] = self.endTextField.text
         
+        println("times")
+        println(starttime)
+        println(endtime)
         
         CLGeocoder().geocodeAddressString(loc, completionHandler: {(placemarks, error) -> Void in
             if error != nil {
@@ -116,7 +193,12 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate{
         
         var loc = event["address"] as! String
         var geocoder = CLGeocoder()
-       
+        event["start"] = starttime
+        event["end"] = endtime
+        println("times")
+        println(starttime)
+        println(endtime)
+
         
         CLGeocoder().geocodeAddressString(loc, completionHandler: {(placemarks, error) -> Void in
             if error != nil {
@@ -153,16 +235,25 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate{
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController!.toolbarHidden = false
+
         self.eventTitle.delegate = self
-        self.startTime.delegate = self
-        self.endTime.delegate = self
+       // self.startTime.delegate = self
+       // self.endTime.delegate = self
         self.eventLocation.delegate = self
         self.eventDescription.delegate = self
-        
-        // Do any additional setup after loading the view.
+        self.startTextField.delegate = self
+        self.endTextField.delegate = self
+        var tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "DismissKeyboard")
+        view.addGestureRecognizer(tap)
+               // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
+    
+    func DismissKeyboard(){
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+       override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }

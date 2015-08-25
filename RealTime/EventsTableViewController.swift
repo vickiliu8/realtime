@@ -25,15 +25,17 @@ class EventsTableViewController: PFQueryTableViewController,  CLLocationManagerD
     var events = [AnyObject]()
     
     var location: CLLocationCoordinate2D
+    
+
     let place = PFGeoPoint(latitude:40.0, longitude:-30.0)
     
-   
     required init(coder aDecoder: NSCoder!) {
         location = CLLocationCoordinate2DMake(0, 0)
+        //var date = NSDate()
         //place = PFGeoPoint(latitude: 0, longitude: 0)
         super.init(coder: aDecoder)
     }
-    
+  
     let cellIdentifier:String = "EventCell"
     let locationManager = CLLocationManager()
     
@@ -41,6 +43,22 @@ class EventsTableViewController: PFQueryTableViewController,  CLLocationManagerD
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.separatorColor = UIColor.blackColor()
+        self.navigationController!.toolbarHidden = false
+        //self.navigationController!.toolbar.barStyle = UIBarStyleDefault
+        
+        self.navigationController!.toolbar.tintColor =  UIColor.whiteColor().colorWithAlphaComponent(0.8)
+
+        
+        /*self.navigationController!.toolbar.setBackgroundImage(UIImage(),
+            forToolbarPosition: UIBarPosition.Any,
+            barMetrics: UIBarMetrics.Default)
+        
+        
+        self.navigationController!.toolbar.setShadowImage(UIImage(),
+            forToolbarPosition: UIBarPosition.Any)*/
+        
+        
+        
         
         /*PFGeoPoint.geoPointForCurrentLocationInBackground { point, error in
             if error == nil {
@@ -207,6 +225,9 @@ class EventsTableViewController: PFQueryTableViewController,  CLLocationManagerD
                 detailViewController.eventDistance = events[indexPath.row]["distFromCurrentUser"] as! String?
                 detailViewController.eventAddress = events[indexPath.row]["address"] as! String?
                 detailViewController.eventImage = events[indexPath.row]["picture"] as! PFFile?
+                detailViewController.eventBlurb = events[indexPath.row]["blurb"] as! String?
+                detailViewController.eventEnd = events[indexPath.row]["endString"] as! String?
+            
             }
         }
         

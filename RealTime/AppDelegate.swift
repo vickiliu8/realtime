@@ -44,7 +44,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window!.rootViewController = navigationVC
         window!.makeKeyAndVisible()*/
-        
+        UINavigationBar.appearance().barTintColor = UIColor.blackColor()
+        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
+        UIToolbar.appearance().barTintColor = UIColor.blackColor().colorWithAlphaComponent(0.5)
+        //UIToolbar.appearance().setFrame(CGRectMake(0, 50, 320, 35))
+        UIToolbar.appearance().tintColor = UIColor.whiteColor().colorWithAlphaComponent(0.5)
         
         PFUser.enableAutomaticUser()
         

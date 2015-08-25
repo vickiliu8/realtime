@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>707EE26B-96EA-4731-A29D-B98A844179F3</string>
+	<key>IDESourceControlProjectName</key>
+	<string>project</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>39BA7C762E2410C44C7AEE265D4F1145ECF09A07</key>
+		<string>https://github.com/vickiliu8/realtime.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>RealTime.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>39BA7C762E2410C44C7AEE265D4F1145ECF09A07</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/vickiliu8/realtime.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>39BA7C762E2410C44C7AEE265D4F1145ECF09A07</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>39BA7C762E2410C44C7AEE265D4F1145ECF09A07</string>
+			<key>IDESourceControlWCCName</key>
+			<string>RealTime</string>
+		</dict>
+	</array>
+</dict>
+</plist>
