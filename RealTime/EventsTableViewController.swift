@@ -22,8 +22,10 @@ extension PFGeoPoint {
 class EventsTableViewController: PFQueryTableViewController,  CLLocationManagerDelegate {
     // MARK: - Lifecycle
     
+   // let predicate = NSPredicate(format: "2 IN filters")
+    var predicate: NSPredicate
     var events = [AnyObject]()
-    
+    var filter: Bool
     var location: CLLocationCoordinate2D
     
 
@@ -31,6 +33,8 @@ class EventsTableViewController: PFQueryTableViewController,  CLLocationManagerD
     
     required init(coder aDecoder: NSCoder!) {
         location = CLLocationCoordinate2DMake(0, 0)
+        predicate = NSPredicate()
+        filter = Bool()
         //var date = NSDate()
         //place = PFGeoPoint(latitude: 0, longitude: 0)
         super.init(coder: aDecoder)
@@ -118,8 +122,15 @@ class EventsTableViewController: PFQueryTableViewController,  CLLocationManagerD
     
     //2
     override func queryForTable() -> PFQuery {
-       
-        var query = PFQuery(className:"Event")
+        
+        var query : PFQuery
+        if filter == false {
+            query = PFQuery(className:"Event")
+        }else {
+            query = PFQuery(className: "Event", predicate: predicate)
+        }
+        //query.cachePolicy = .NetworkElseCache
+
         var usersLocation: AnyObject? = PFUser.currentUser()!["location"]
         println(usersLocation)
         query.whereKey("location", nearGeoPoint:usersLocation! as! PFGeoPoint)
@@ -140,13 +151,13 @@ class EventsTableViewController: PFQueryTableViewController,  CLLocationManagerD
         
         if let pfObject = object {
             cell?.eventName?.text = pfObject["name"] as? String
-            println(pfObject)
+            //println(pfObject)
             
             var locA: AnyObject? = pfObject["location"]
             var locB: AnyObject? = PFUser.currentUser()!["location"]
             println("stuff")
-            println(locA)
-            println(locB)
+            //println(locA)
+            //println(locB)
             locA = locA as! PFGeoPoint
             locB = locB as! PFGeoPoint
             var latitude: CLLocationDegrees = locA!.latitude
@@ -161,9 +172,9 @@ class EventsTableViewController: PFQueryTableViewController,  CLLocationManagerD
             
             var locationB = CLLocation(latitude: latitude, longitude: longitude)
             let distance = locationA.distanceFromLocation(locationB)
-            println("miles")
+            //println("miles")
             
-            println(distance * 0.000621371)
+            //println(distance * 0.000621371)
             var miles = distance * 0.000621371
             var m:String = String(format:"%.1f", miles)
             cell!.eventDistance.text = m + " mi"

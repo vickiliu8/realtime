@@ -32,6 +32,7 @@
 		2D0554751B86722600C4EF45 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0554741B86722600C4EF45 /* SignupViewController.swift */; };
 		2D3255771B8B8EEC00D5FF57 /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D3255751B8B8EEC00D5FF57 /* ParseCrashReporting.framework */; };
 		2D3255781B8B8EEC00D5FF57 /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D3255761B8B8EEC00D5FF57 /* ParseFacebookUtilsV4.framework */; };
+		2D531F391B8CBE8100CED08F /* FiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D531F381B8CBE8100CED08F /* FiltersViewController.swift */; };
 		2D53723E1B8A3F0C00621F7A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D53723D1B8A3F0C00621F7A /* DetailViewController.swift */; };
 		2D6172BB1B8B971B004574DB /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D6172BA1B8B971A004574DB /* Bolts.framework */; };
 		2D6172BD1B8B9817004574DB /* homepage.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D6172BC1B8B9817004574DB /* homepage.png */; };
@@ -99,6 +100,7 @@
 		2D0554741B86722600C4EF45 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		2D3255751B8B8EEC00D5FF57 /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseCrashReporting.framework; path = "../../Downloads/parse-library-1.7.5/ParseCrashReporting.framework"; sourceTree = "<group>"; };
 		2D3255761B8B8EEC00D5FF57 /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseFacebookUtilsV4.framework; path = "../../Downloads/parse-library-1.7.5/ParseFacebookUtilsV4.framework"; sourceTree = "<group>"; };
+		2D531F381B8CBE8100CED08F /* FiltersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiltersViewController.swift; sourceTree = "<group>"; };
 		2D53723A1B8A2E4900621F7A /* Futura.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; name = Futura.ttc; path = ../../RealTimeGallery/RealTimeGallery/Futura.ttc; sourceTree = "<group>"; };
 		2D53723B1B8A2E4900621F7A /* RobotoCondensed-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "RobotoCondensed-Bold.ttf"; path = "../../RealTimeGallery/RealTimeGallery/RobotoCondensed-Bold.ttf"; sourceTree = "<group>"; };
 		2D53723C1B8A2E4900621F7A /* RobotoCondensed-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "RobotoCondensed-Regular.ttf"; path = "../../RealTimeGallery/RealTimeGallery/RobotoCondensed-Regular.ttf"; sourceTree = "<group>"; };
@@ -194,33 +196,19 @@
 				2D7E4E071B8AAC5500772922 /* UIImageEffects.swift */,
 				2D0554281B84EAA500C4EF45 /* AppDelegate.swift */,
 				2D05542A1B84EAA500C4EF45 /* ViewController.swift */,
-				2D53723A1B8A2E4900621F7A /* Futura.ttc */,
-				2D6172BE1B8B9AED004574DB /* add.png */,
-				2D53723B1B8A2E4900621F7A /* RobotoCondensed-Bold.ttf */,
-				2D6ED2DE1B8B5BCB006351F1 /* OratorStd.otf */,
-				2D7E4E051B8A8CED00772922 /* placeholder.JPG */,
-				2D6172C21B8B9EB3004574DB /* addsmall.png */,
-				2D6172D01B8BF2D8004574DB /* camera.png */,
-				2D53723C1B8A2E4900621F7A /* RobotoCondensed-Regular.ttf */,
-				2D6172C61B8B9FA5004574DB /* home.png */,
-				2D6172C71B8B9FA5004574DB /* profile.png */,
-				2D6172BC1B8B9817004574DB /* homepage.png */,
-				2D6172CD1B8BF16B004574DB /* shoes white.png */,
-				2D6172C41B8B9F3E004574DB /* more.png */,
-				2D6ED2E81B8B8B63006351F1 /* fbrt.png */,
+				2D531F3A1B8CBE8500CED08F /* Images/fonts */,
 				2D05542C1B84EAA500C4EF45 /* Main.storyboard */,
+				2D531F381B8CBE8100CED08F /* FiltersViewController.swift */,
 				2D6172CA1B8BA5F7004574DB /* LogoutViewController.swift */,
 				2D6ED2E01B8B7FD0006351F1 /* ProfileViewController.swift */,
-				2D7E4E011B8A6C6600772922 /* CreateEventViewController.swift */,
+				2D05546D1B84ECAD00C4EF45 /* EventsTableViewController.swift */,
 				2D53723D1B8A3F0C00621F7A /* DetailViewController.swift */,
-				2D6ED2E21B8B870C006351F1 /* facebook.jpg */,
+				2D7E4E011B8A6C6600772922 /* CreateEventViewController.swift */,
+				2D531F3B1B8CBEB700CED08F /* Models */,
 				2D0554731B8671FE00C4EF45 /* Login/Registration */,
 				2D05542F1B84EAA500C4EF45 /* Images.xcassets */,
 				2D0554311B84EAA500C4EF45 /* LaunchScreen.xib */,
 				2D05546A1B84EB1300C4EF45 /* RealTime-Bridging-Header.h */,
-				2D05546D1B84ECAD00C4EF45 /* EventsTableViewController.swift */,
-				2D05546F1B84F22F00C4EF45 /* Event.swift */,
-				2DDFCC7A1B87D66900EDD459 /* EventsTableViewCell.swift */,
 				2D0554261B84EAA500C4EF45 /* Supporting Files */,
 			);
 			path = RealTime;
@@ -284,6 +272,37 @@
 				2D0554581B84EAEA00C4EF45 /* Parse.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2D531F3A1B8CBE8500CED08F /* Images/fonts */ = {
+			isa = PBXGroup;
+			children = (
+				2D6ED2E21B8B870C006351F1 /* facebook.jpg */,
+				2D53723A1B8A2E4900621F7A /* Futura.ttc */,
+				2D53723B1B8A2E4900621F7A /* RobotoCondensed-Bold.ttf */,
+				2D6ED2DE1B8B5BCB006351F1 /* OratorStd.otf */,
+				2D53723C1B8A2E4900621F7A /* RobotoCondensed-Regular.ttf */,
+				2D6172D01B8BF2D8004574DB /* camera.png */,
+				2D6172CD1B8BF16B004574DB /* shoes white.png */,
+				2D6172C41B8B9F3E004574DB /* more.png */,
+				2D6172BE1B8B9AED004574DB /* add.png */,
+				2D7E4E051B8A8CED00772922 /* placeholder.JPG */,
+				2D6172C21B8B9EB3004574DB /* addsmall.png */,
+				2D6172C61B8B9FA5004574DB /* home.png */,
+				2D6172C71B8B9FA5004574DB /* profile.png */,
+				2D6172BC1B8B9817004574DB /* homepage.png */,
+				2D6ED2E81B8B8B63006351F1 /* fbrt.png */,
+			);
+			name = Images/fonts;
+			sourceTree = "<group>";
+		};
+		2D531F3B1B8CBEB700CED08F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2DDFCC7A1B87D66900EDD459 /* EventsTableViewCell.swift */,
+				2D05546F1B84F22F00C4EF45 /* Event.swift */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -403,6 +422,7 @@
 				2DDFCC7B1B87D66900EDD459 /* EventsTableViewCell.swift in Sources */,
 				2D0554701B84F22F00C4EF45 /* Event.swift in Sources */,
 				2D05542B1B84EAA500C4EF45 /* ViewController.swift in Sources */,
+				2D531F391B8CBE8100CED08F /* FiltersViewController.swift in Sources */,
 				2D0554291B84EAA500C4EF45 /* AppDelegate.swift in Sources */,
 				2D6ED2E11B8B7FD0006351F1 /* ProfileViewController.swift in Sources */,
 				2D0554721B8671BB00C4EF45 /* LoginViewController.swift in Sources */,

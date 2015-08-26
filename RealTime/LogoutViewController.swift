@@ -17,12 +17,12 @@ class LogoutViewController: UIViewController {
     }
 
     @IBAction func logoutPressed(sender: AnyObject) {
-        var login: FBSDKLoginManager = FBSDKLoginManager()
+        /*var login: FBSDKLoginManager = FBSDKLoginManager()
         if (FBSDKAccessToken.currentAccessToken() != nil) {
             login.logOut()
-        }
+        }*/
             PFUser.logOut()
-        
+            println(PFUser.currentUser())
             navigationController?.popToRootViewControllerAnimated(true)
         }
     

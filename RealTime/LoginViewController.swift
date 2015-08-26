@@ -14,14 +14,25 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+       // PFUser.logOut()
+        //println(PFUser.currentUser())
         // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         if let user = PFUser.currentUser() {
+            println("authenticated")
             if user.isAuthenticated() {
+                if !PFFacebookUtils.isLinkedWithUser(user) {
+                    PFFacebookUtils.linkUserInBackground(user, withReadPermissions: nil, block: {
+                        (succeeded: Bool, error: NSError?) -> Void in
+                        if succeeded {
+                            println("Woohoo, the user is linked with Facebook!")
+                        }
+                    })
+                }
+                
                 self.performSegueWithIdentifier(tableViewWallSegue, sender: nil)
             }
         }
@@ -45,6 +56,14 @@ class LoginViewController: UIViewController {
             } else {
                 
                 NSLog("User logged in through Facebook! \(user!.username)")
+                if !PFFacebookUtils.isLinkedWithUser(user!) {
+                    PFFacebookUtils.linkUserInBackground(user!, withReadPermissions: nil, block: {
+                        (succeeded: Bool, error: NSError?) -> Void in
+                        if succeeded {
+                            println("Woohoo, the user is linked with Facebook!")
+                        }
+                    })
+                }
                 self.performSegueWithIdentifier(self.tableViewWallSegue, sender: nil)
             
             }
