@@ -50,7 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //UIToolbar.appearance().setFrame(CGRectMake(0, 50, 320, 35))
         UIToolbar.appearance().tintColor = UIColor.whiteColor().colorWithAlphaComponent(0.5)
         
-        PFUser.enableAutomaticUser()
+        //PFUser.enableAutomaticUser()
         
         let defaultACL = PFACL();
         

@@ -23,7 +23,7 @@ class LogoutViewController: UIViewController {
         }*/
             PFUser.logOut()
             println(PFUser.currentUser())
-            navigationController?.popToRootViewControllerAnimated(true)
+             self.performSegueWithIdentifier("presentLogin", sender: nil)
         }
     
     override func didReceiveMemoryWarning() {

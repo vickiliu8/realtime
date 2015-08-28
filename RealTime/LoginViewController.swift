@@ -14,7 +14,7 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-       // PFUser.logOut()
+        //PFUser.logOut()
         //println(PFUser.currentUser())
         // Do any additional setup after loading the view.
     }
