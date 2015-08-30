@@ -10,6 +10,7 @@ import UIKit
 
 class CreateEventViewController: UIViewController, UITextFieldDelegate{
 
+    @IBOutlet weak var scrollView: UIScrollView!
     
  
     @IBOutlet weak var eventTitle: UITextField!
@@ -35,8 +36,30 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate{
 
     }
     
+    //switches
     
-   
+    @IBOutlet weak var artSwitch: UISwitch!
+    
+    @IBOutlet weak var campusSwitch: UISwitch!
+    
+    @IBOutlet weak var foodSwitch: UISwitch!
+    
+    @IBOutlet weak var filmSwitch: UISwitch!
+    
+    @IBOutlet weak var sportSwitch: UISwitch!
+    
+    @IBOutlet weak var healthSwitch: UISwitch!
+    
+    @IBOutlet weak var innSwitch: UISwitch!
+    
+    @IBOutlet weak var musicSwitch: UISwitch!
+    
+    @IBOutlet weak var nightSwitch: UISwitch!
+    
+    @IBOutlet weak var techSwitch: UISwitch!
+    
+   //
+    
     @IBAction func startEditing(sender: UITextField) {
         var datePickerView:UIDatePicker = UIDatePicker()
         
@@ -147,6 +170,49 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate{
         println(starttime)
         println(endtime)
         
+        if artSwitch.on {
+            event.addUniqueObjectsFromArray([1], forKey:"filters")
+            println("art")
+        }
+        if campusSwitch.on {
+             event.addUniqueObjectsFromArray([2], forKey:"filters")
+            println("campus")
+        }
+        if foodSwitch.on {
+             event.addUniqueObjectsFromArray([3], forKey:"filters")
+            println("food")
+        }
+        if filmSwitch.on {
+             event.addUniqueObjectsFromArray([4], forKey:"filters")
+            println("film")
+        }
+        if sportSwitch.on {
+             event.addUniqueObjectsFromArray([9], forKey:"filters")
+            println("sports")
+        }
+        if healthSwitch.on {
+             event.addUniqueObjectsFromArray([5], forKey:"filters")
+            println("health")
+        }
+        if innSwitch.on {
+             event.addUniqueObjectsFromArray([6], forKey:"filters")
+            println("innovation")
+        }
+        if musicSwitch.on {
+             event.addUniqueObjectsFromArray([7], forKey:"filters")
+            println("music")
+        }
+        if nightSwitch.on {
+             event.addUniqueObjectsFromArray([8], forKey:"filters")
+            println("nightlife")
+        }
+        if techSwitch.on {
+             event.addUniqueObjectsFromArray([10], forKey:"filters")
+            println("tech")
+        }
+        
+        
+        
         CLGeocoder().geocodeAddressString(loc, completionHandler: {(placemarks, error) -> Void in
             if error != nil {
                 println("Reverse geocoder failed with error" + error.localizedDescription)
@@ -199,6 +265,46 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate{
         println(starttime)
         println(endtime)
 
+        if artSwitch.on {
+            event.addUniqueObjectsFromArray([1], forKey:"filters")
+            println("art")
+        }
+        if campusSwitch.on {
+            event.addUniqueObjectsFromArray([2], forKey:"filters")
+            println("campus")
+        }
+        if foodSwitch.on {
+            event.addUniqueObjectsFromArray([3], forKey:"filters")
+            println("food")
+        }
+        if filmSwitch.on {
+            event.addUniqueObjectsFromArray([4], forKey:"filters")
+            println("film")
+        }
+        if sportSwitch.on {
+            event.addUniqueObjectsFromArray([9], forKey:"filters")
+            println("sports")
+        }
+        if healthSwitch.on {
+            event.addUniqueObjectsFromArray([5], forKey:"filters")
+            println("health")
+        }
+        if innSwitch.on {
+            event.addUniqueObjectsFromArray([6], forKey:"filters")
+            println("innovation")
+        }
+        if musicSwitch.on {
+            event.addUniqueObjectsFromArray([7], forKey:"filters")
+            println("music")
+        }
+        if nightSwitch.on {
+            event.addUniqueObjectsFromArray([8], forKey:"filters")
+            println("nightlife")
+        }
+        if techSwitch.on {
+            event.addUniqueObjectsFromArray([10], forKey:"filters")
+            println("tech")
+        }
         
         CLGeocoder().geocodeAddressString(loc, completionHandler: {(placemarks, error) -> Void in
             if error != nil {
@@ -247,6 +353,7 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate{
         var tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "DismissKeyboard")
         view.addGestureRecognizer(tap)
                // Do any additional setup after loading the view.
+        self.scrollView.contentSize = CGSizeMake(400.0, 1300.0)
     }
     
     func DismissKeyboard(){

@@ -62,6 +62,7 @@ class FiltersViewController: UIViewController {
             eventViewController.predicate = NSPredicate(format: "6 IN filters")
             eventViewController.filter = true
         }else if segue.identifier == "sevenPressed" {
+            println("seven pressed")
             let eventViewController = segue.destinationViewController as! EventsTableViewController
             eventViewController.predicate = NSPredicate(format: "7 IN filters")
             eventViewController.filter = true
