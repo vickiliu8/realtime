@@ -43,6 +43,8 @@ class EventsTableViewController: PFQueryTableViewController,  CLLocationManagerD
     let cellIdentifier:String = "EventCell"
     let locationManager = CLLocationManager()
     
+    
+    
    // var events = [Event]()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -96,6 +98,9 @@ class EventsTableViewController: PFQueryTableViewController,  CLLocationManagerD
         
     }
     
+    @IBAction func homePressed(sender: AnyObject) {
+        self.loadObjects()
+    }
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         var locValue:CLLocationCoordinate2D = manager.location.coordinate
         self.location = locValue
@@ -128,19 +133,34 @@ class EventsTableViewController: PFQueryTableViewController,  CLLocationManagerD
             query = PFQuery(className:"Event")
         }else {
             query = PFQuery(className: "Event", predicate: predicate)
+           // events = query.findObjects()!
+           // println(events)
         }
         //query.cachePolicy = .NetworkElseCache
 
         var usersLocation: AnyObject? = PFUser.currentUser()!["location"]
         println(usersLocation)
+        
         query.whereKey("location", nearGeoPoint:usersLocation! as! PFGeoPoint)
-        
-        
         //query.limit = 10
         // Final list of objects
-        events = query.findObjects()!
-        query.limit = 15
-         return query
+        
+        query.limit = 30
+      /*  query.findObjectsInBackgroundWithBlock {
+            (objects: [AnyObject]?, error: NSError?) -> Void in
+            
+            if error == nil {
+                // The find succeeded.
+                println("Successfully retrieved \(objects!.count) scores.")
+                self.events = objects!
+            } else {
+                // Log details of the failure
+                println("Error")
+            }
+        }*/
+        
+       // events = query.findObjects()!
+        return query
 
     }
     
@@ -220,7 +240,8 @@ class EventsTableViewController: PFQueryTableViewController,  CLLocationManagerD
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showEventDetail" {
-            let detailViewController = segue.destinationViewController as! DetailViewController
+            
+            /*let detailViewController = segue.destinationViewController as! DetailViewController
             if let indexPath = tableView.indexPathForCell(sender as! EventsTableViewCell) {
                 
                 /*var b_image = self.view.convertViewToImage()
@@ -239,6 +260,21 @@ class EventsTableViewController: PFQueryTableViewController,  CLLocationManagerD
                 detailViewController.eventBlurb = events[indexPath.row]["blurb"] as! String?
                 detailViewController.eventEnd = events[indexPath.row]["endString"] as! String?
             
+            }*/
+            let detailViewController = segue.destinationViewController as! DetailViewController
+            if let  indexPath = tableView.indexPathForCell(sender as! EventsTableViewCell){
+            var object: PFObject = self.objectAtIndexPath(indexPath)!
+                detailViewController.eventName = object["name"] as! String?
+                detailViewController.eventBlurb = object["blurb"] as! String?
+                detailViewController.eventDistance = object["distFromCurrentUser"] as! String?
+                detailViewController.eventAddress = object["address"] as! String?
+                detailViewController.eventImage = object["picture"] as! PFFile?
+                detailViewController.eventBlurb = object["blurb"] as! String?
+                detailViewController.eventEnd = object["endString"] as! String?
+
+            
+                
+                
             }
         }
         

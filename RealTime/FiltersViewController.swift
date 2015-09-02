@@ -48,6 +48,7 @@ class FiltersViewController: UIViewController {
         }else if segue.identifier == "threePressed" {
             let eventViewController = segue.destinationViewController as! EventsTableViewController
             eventViewController.predicate = NSPredicate(format: "3 IN filters")
+            println(eventViewController.predicate)
             eventViewController.filter = true
         }else if segue.identifier == "fourPressed" {
             let eventViewController = segue.destinationViewController as! EventsTableViewController
